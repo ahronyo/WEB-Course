@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTW App Template</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body></body>
+    <!-- your app code goes here -->
+    <div class="container">
+      <div class="monitor" id="monitor">0</div>
+      <div class="buttonRow1">
+          <div class="but">MC</div>
+          <div class="but">MR</div>
+          <div class="but">M+</div>
+          <div class="but">M-</div>
+          <div class="but">MS-</div>
+          <div class="but">MS*</div>
+      </div>
+      
+      <div class="buttonRow">
+          <div class="butOperators" data-value =2**>2<sup>nd</div>
+          <div class="butOperators" data-value =3.14>π</div>
+          <div class="butOperators" data-value ="2.718">e</div>
+          <div class="butOperators" data-value="C">C</div>
+          <div class="butOperators" data-value ="⌫">⌫</div>
+      </div>
+  
+      <div class="buttonRow">
+          <div class="butOperators" data-value ="**2">x<sup>2</div>
+          <div class="butOperators" data-value ="1/">1<sub>/x</div>
+          <div class="butOperators" data-value ="abs(">|x|</div>
+          <div class="butOperators" data-value="10**">exp</div>
+          <div class="butOperators" data-value="mod">mod</div>
+      </div>
+  
+      <div class="buttonRow">
+          <div class="butOperators"data-value="*0.5">√x</div>
+          <div class="butOperators" data-value="(">(</div>
+          <div class="butOperators" data-value=")">)</div>
+          <div class="butOperators"data-value="!">n!</div>
+          <div class="butOperators"data-value="/">&#247</div>
+      </div>
+  
+      <div class="buttonRow">
+          <div class="butOperators" data-value="**">x<sup>y</sup></div>
+          <div class="but" data-value ="7">7</div>
+          <div class="but" data-value ="8">8</div>
+          <div class="but" data-value ="9">9</div>
+          <div class="butOperators" data-value ="*">×</div>
+      </div>
+  
+      <div class="buttonRow">
+          <div class="butOperators" data-value = 10**>10<sup>x</sup></div>
+          <div class="but" data-value ="4">4</div>
+          <div class="but" data-value ="5">5</div>
+          <div class="but" data-value ="6">6</div>
+          <div class="butOperators"data-value ="-">-</div>
+      </div>
+  
+      <div class="buttonRow">
+          <div class="butOperators" data-value="log">log</div>
+          <div class="but" data-value ="3">3</div>
+          <div class="but" data-value ="2">2</div>
+          <div class="but" data-value ="1">1</div>
+          <div class="butOperators" data-value ="+">+</div>
+      </div>
+  
+      <div class="buttonRow">
+          <div class="butOperators" data-value="ln">ln</div>
+          <div class="butOperators">+<sub>/-</sub></div>
+          <div class="but" data-value="0">0</div>
+          <div class="but" data-value =".">.</div>
+          <div class="butWide" data-value ="=">=</div>
+      </div>
+  
+      <div style="clear: both"></div>
+  </div>
+  
+
+    <!-- special scripts for integration in MTW gallery - must be placed at the bottom of the HTML after your code -->
+    <script>
+      // custom config for the MTW app
+      const mtwAppConfig = {
+        border: true, // app border in the MTW page
+      };
+
+      ///////////////////////////////////////////////////////
+      // implement this functions in order to use private API
+      const sendPrivateApiRequest = async () => {
+        // your code here:
+        // sendRequestToParent({ cat: 'getAssets' })
+      };
+
+      const acceptPrivateApiResponse = async (data) => {
+        // process received data here:
+        // console.log(data)
+      };
+
+      // use this in order to send on document load
+      document.addEventListener("DOMContentLoaded", () => {
+        // your code here:
+        //sendRequestToParent({ method: 'getAssets' })
+      });
+    </script>
+    <script src="https://morethanwallet.com/appstore/index.js"></script>
+    <script src="mathemtical.js"></script>
+  </body>
+</html>
