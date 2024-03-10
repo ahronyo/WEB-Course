@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Information</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        #loadMoreBtn {
+            margin-top: 10px;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Product Information</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Discount Percentage</th>
+                <th>Rating</th>
+                <th>Stock</th>
+                <th>Brand</th>
+                <th>Category</th>
+                <th>Thumbnail</th>
+                <th>Images</th>
+            </tr>
+        </thead>
+        <tbody id="productTableBody">
+            <!-- Product data will be dynamically added here using JavaScript -->
+        </tbody>
+    </table>
+
+    <button id="loadMoreBtn" onclick="loadMore()">Load More</button>
+
+    <script>
+        var productsData; // Variable to store all product data
+        var displayedProducts = 0; // Variable to track the number of displayed products
+
+        // Fetch data from the provided endpoint
+        fetch('https://dummyjson.com/products')
+            .then(response => response.json())
+            .then(data => {
+                productsData = data.products;
+                displayProducts();
+            })
+            .catch(error => console.error('Error fetching data:', error));
+
+        // Function to display the next set of products
+        function displayProducts() {
+            var tbody = document.getElementById('productTableBody');
+
+            // Display 10 more products or all remaining products if there are fewer than 10
+            for (var i = displayedProducts; i < Math.min(displayedProducts + 10, productsData.length); i++) {
+                var product = productsData[i];
+                var row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${product.id}</td>
+                    <td>${product.title}</td>
+                    <td>${product.description}</td>
+                    <td>${product.price}</td>
+                    <td>${product.discountPercentage}</td>
+                    <td>${product.rating}</td>
+                    <td>${product.stock}</td>
+                    <td>${product.brand}</td>
+                    <td>${product.category}</td>
+                    <td><img src="${product.thumbnail}" alt="Thumbnail"></td>
+                    <td>${product.images.map(image => `<img src="${image}" alt="Image">`).join('')}</td>
+                `;
+                tbody.appendChild(row);
+            }
+
+            // Update the displayedProducts variable
+            displayedProducts += 10;
+
+            // Hide the "Load More" button if all products are displayed
+            if (displayedProducts >= productsData.length) {
+                document.getElementById('loadMoreBtn').style.display = 'none';
+            }
+        }
+
+        // Function to load more products when the "Load More" button is clicked
+        function loadMore() {
+            displayProducts();
+        }
+    </script>
+</body>
+</html>
